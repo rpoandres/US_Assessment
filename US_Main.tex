@@ -16,6 +16,11 @@
 \title{\textbf{Assessment\\CASA0002 Urban Simulation\\MSc Urban Spatial Science}}
 \author{\textbf{Andrés Restrepo Jiménez}}
 
+\usepackage{natbib}
+\bibliographystyle{abbrvnat}
+\hypersetup{citecolor=black}
+\setcitestyle{authoryear,open={(},close={)}}
+
 \begin{document}
 \maketitle
 
@@ -31,11 +36,21 @@
 
 \subsection{Centrality measures}
 
-\subsubsection{Degree centrality}
+\subsubsection{Degree centrality} 
 
-The degree of a node is the number of edges that node is connected with (). Hence, the degree centrality measure account for the number of edges a node is connected to. The higher the value, the higher number of edges (links) are connected to that node. Although simple, the degree centrality comes as a valuable reference when assessing networks. ()
+The degree of a node is the number of edges that node is connected with \citep{arcaute_networks_2023}. Hence, the degree centrality measure account for the number of edges a node is connected to. The higher the value, the higher number of edges (links) are connected to that node. Although simple, the degree centrality comes as a valuable reference when assessing networks \citep{newman_networks_2018}. The degree centrality measure $dc$ for node $i$ is defined as 
 
-\subsubsection{Closeness centrality}
+\[dc_i = \frac{v}{n-1}\]
+
+Where $v$ is the number of edges connected to node $i$ and $n$ is number of nodes in the network. It represents the faction of nodes that node $i$ is connected to, as $n-1$ is the number of possible connections of node $i$ in the network.
+
+In the underground network context, the degree of a station would represent the number of  stations that the station of interest is connected with. Then, the degree centrality of a  station would measure the number of connections of a stations to other stations in the underground.
+
+\subsubsection{Closeness centrality $cc_i$}
+
+
+
+
 
 \subsubsection{Betweenness centrality}
 
@@ -131,7 +146,7 @@ The degree of a node is the number of edges that node is connected with (). Henc
 
 % \subsection{How to add Citations and a References List}
 
-You can simply upload a \verb|.bib| file containing your BibTeX entries, created with a tool such as JabRef. You can then cite entries from it, like this: \cite{greenwade93}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|. You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
+% You can simply upload a \verb|.bib| file containing your BibTeX entries, created with a tool such as JabRef. You can then cite entries from it, like this: \cite{arcaute_networks_2023}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|. You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
 
 % If you have an \href{https://www.overleaf.com/user/subscription/plans}{upgraded account}, you can also import your Mendeley or Zotero library directly as a \verb|.bib| file, via the upload menu in the file-tree.
 
@@ -139,7 +154,8 @@ You can simply upload a \verb|.bib| file containing your BibTeX entries, created
 
 % We hope you find Overleaf useful, and do take a look at our \href{https://www.overleaf.com/learn}{help library} for more tutorials and user guides! Please also let us know if you have any feedback using the Contact Us link at the bottom of the Overleaf menu --- or use the contact form at \url{https://www.overleaf.com/contact}.
 
-\bibliographystyle{alpha}
-\bibliography{sample}
+% \bibliographystyle{abbrvnat}
+% \setcitestyle{authoryear,open={(},close={)}}
+\bibliography{my_bio}
 
 \end{document}
