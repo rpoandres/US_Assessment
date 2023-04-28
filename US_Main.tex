@@ -44,13 +44,13 @@ The degree of a node is the number of edges that node is connected with \citep{a
 
 where $v$ is the number of edges connected to node $i$ and $n$ is number of nodes in the network. It represents the faction of nodes that node $i$ is connected to, as $n-1$ is the number of possible connections of node $i$ in the network \citep{hagberg_exploring_2008}.
 
-In the underground network context, the degree of a station would represent the number of  stations that the station of interest is connected with. Then, the degree centrality of a  station would measure the number of connections of a stations to other stations in the underground. Thus, this measure reflects the level of connectivity of a underground station when just considering the number of connections to other stations.
+In the underground network context, the degree centrality of a station would measure the number of connections of a stations to other stations in the underground. Thus, this measure would detect the stations with the higher level of connectivity in the underground when just considering the number of direct connections to other stations. If the station with the highest degree centrality measure value is removed, it will caused the biggest effect in the network in terms of number of disrupted immediate connections.
 
-\subsubsection{Closeness centrality}
+\subsubsection{Closeness centrality - Reeplace with eigen vector?}
 
 The closeness centrality measures accounts for how close in term of distance is a node to other nodes in a network.
 
-Let $d_{ij}$ be the geodesic distance (shortest path) between node $i$ and $j$. The mean geodesic distance $l$ of a node $i$ to other nodes in a network is given by
+Let $d_{ij}$ be the geodesic distance (shortest path) between node $i$ and $j$ \citep{marin_review_2022}. The mean geodesic distance $l$ of a node $i$ to other nodes in a network is given by
     
 \[l_{i}=\frac{1}{n} \sum_{j} d_{ij}\]
     
@@ -58,11 +58,32 @@ where $n$ is the total number of nodes of the network. Thus, the closeness centr
 
 \[C_{i}= \frac{1}{l_{i}} = \frac{n}{\sum_{j} d_{ij}}\]
 
-The closeness centrality measure applied to the underground network would result in the 
-
+The closeness centrality measure applied to the underground network would result in the how distant is a station to reach all other stations. In other words, this measure would flag the station with the lowest mean geodesic distance (shortest path) to all other stations.
 
 \subsubsection{Betweenness centrality}
 
+The betweenness centrality measure calculates the number of shortest paths between all possible node pairs in a network that go though a node \citep{arcaute_networks_2023}.
+
+To calculate this measure, it is required to determine if a given node is the shortest path between every node pair in a network $s^{j}_{k}$ as follows
+
+
+\[s^{i}_{jk}=\begin{cases}
+1, & \text{if node $i$ is included in geodesic path between $j$ to $k$}.\\
+0, & \text{if not included}.
+  \end{cases}
+\]
+
+Next, the betweenness centrality measure is defined as 
+
+\[B_{i}=\sum_{jk} s^{i}_{jk}\]
+
+Specially in the topological case, there is a high chance of having more than one geodesic path between $j$ and $k$. To prevent this, the measure must be normalized by the number of geodesic paths $g$ for node pairings as follows
+
+\[B_{i}=\sum_{jk} \frac {s^{i}_{jk}}{g_{jk}}\]
+
+\citep{newman_networks_2018} cited by \citep{marin_review_2022}
+
+In the case of the underground network, the betweeness centrality identifies the station which the highest number of shortest paths between node pairs go thought it. If removed, all the shortest path that go though that station will recomputed to longer alternatives paths to connect origin and destination stations, negatively affecting the system's efficiency.
 
 \section{Spatial interaction models}
 
