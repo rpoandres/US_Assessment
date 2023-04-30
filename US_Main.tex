@@ -38,11 +38,11 @@
 
 \subsubsection{Degree centrality} 
 
-The degree of a node is the number of edges that node is connected with \citep{arcaute_networks_2023}. Hence, the degree centrality measure account for the number of edges a node is connected to. The higher the value, the higher number of edges (links) are connected to that node. Although simple, the degree centrality comes as a valuable reference when assessing networks \citep{newman_networks_2018}. The degree centrality measure $d$ for node $i$ is defined as 
+The degree of a node is the number of edges that node is connected with \citep{arcauteNetworksUrbanSimulation2023}. Hence, the degree centrality measure account for the number of edges a node is connected to. The higher the value, the higher number of edges (links) are connected to that node. Although simple, the degree centrality comes as a valuable reference when assessing networks \citep{newmanNetworks2018}. The degree centrality measure $d$ for node $i$ is defined as 
 
 \[D_{i} = \frac{v}{n-1}\]
 
-where $v$ is the number of edges connected to node $i$ and $n$ is number of nodes in the network. It represents the faction of nodes that node $i$ is connected to, as $n-1$ is the number of possible connections of node $i$ in the network \citep{hagberg_exploring_2008}.
+where $v$ is the number of edges connected to node $i$ and $n$ is number of nodes in the network. It represents the faction of nodes that node $i$ is connected to, as $n-1$ is the number of possible connections of node $i$ in the network \citep{hagbergExploringNetworkStructure2008}.
 
 In the underground network context, the degree centrality of a station would measure the number of connections of a stations to other stations in the underground. Thus, this measure would detect the stations with the higher level of connectivity in the underground when just considering the number of direct connections to other stations. If the station with the highest degree centrality measure value is removed, it will caused the biggest effect in the network in terms of number of disrupted immediate connections.
 
@@ -50,7 +50,7 @@ In the underground network context, the degree centrality of a station would mea
 
 The closeness centrality measures accounts for how close in term of distance is a node to other nodes in a network.
 
-Let $d_{ij}$ be the geodesic distance (shortest path) between node $i$ and $j$ \citep{marin_review_2022}. The mean geodesic distance $l$ of a node $i$ to other nodes in a network is given by
+Let $d_{ij}$ be the geodesic distance (shortest path) between node $i$ and $j$ \citep{marinReviewCentralityMeasures2022}. The mean geodesic distance $l$ of a node $i$ to other nodes in a network is given by
     
 \[l_{i}=\frac{1}{n} \sum_{j} d_{ij}\]
     
@@ -62,7 +62,7 @@ The closeness centrality measure applied to the underground network would result
 
 \subsubsection{Betweenness centrality}
 
-The betweenness centrality measure calculates the number of shortest paths between all possible node pairs in a network that go though a node \citep{arcaute_networks_2023}.
+The betweenness centrality measure calculates the number of shortest paths between all possible node pairs in a network that go though a node \citep{arcauteNetworksUrbanSimulation2023}.
 
 To calculate this measure, it is required to determine if a given node is the shortest path between every node pair in a network $s^{j}_{k}$ as follows
 
@@ -81,9 +81,24 @@ Specially in the topological case, there is a high chance of having more than on
 
 \[B_{i}=\sum_{jk} \frac {s^{i}_{jk}}{g_{jk}}\]
 
-\citep{newman_networks_2018} cited by \citep{marin_review_2022}
+\citep{newmanNetworks2018} cited by \citep{marinReviewCentralityMeasures2022}
 
 In the case of the underground network, the betweeness centrality identifies the station which the highest number of shortest paths between node pairs go thought it. If removed, all the shortest path that go though that station will recomputed to longer alternatives paths to connect origin and destination stations, negatively affecting the system's efficiency.
+
+\subsection{Impact measures}
+
+\subsubsection{Number of connected components}
+
+\subsubsection{Size of largest connected component}
+
+\subsubsection{Results of impact measures}
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{Results_Impact_Measures_Total.jpg}
+    \caption{Result of the impact measures by non-sequential and sequential node removal strategy}
+    \label{fig:impact_results}
+\end{figure}
 
 \section{Spatial interaction models}
 
