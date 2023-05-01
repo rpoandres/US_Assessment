@@ -86,6 +86,8 @@ Specially in the topological case, there is a high chance of having more than on
 
 \[B_{i}=\sum_{jk} \frac {s^{i}_{jk}}{g_{jk}}\]
 
+
+
 \citep{newmanNetworks2018} cited by \citep{marinReviewCentralityMeasures2022}
 
 In the case of the underground network, the betweeness centrality identifies the station which the highest number of shortest paths between node pairs go thought it. If removed, all the shortest path that go though that station will recomputed to longer alternatives paths to connect origin and destination stations, negatively affecting the system's efficiency.
@@ -126,9 +128,23 @@ In the case of the underground network, the betweeness centrality identifies the
 
 \subsubsection{Introduction}
 
-The spatial interaction models of interest are derived from the basic gravitational model, which embodies Newton's law of universal gravitation \citep{battyUrbanModellingAlgorithms1976}. Newton's law states that a particle in the universe would interact with other particles with a force directly proportional to the product of their masses and inversely proportional to the between them \citep{battyUrbanSimulationSpatial2023}.
+The spatial interaction models of interest are derived from the basic gravitational model, which embodies Newton's law of universal gravitation \citep{battyUrbanModellingAlgorithms1976}. Newton's law states that ''...a particle in the universe would interact with other particles with a force directly proportional to the product of their masses and inversely proportional to the between them.'' \citep{battyUrbanSimulationSpatial2023}.
+
+When applying gravitation model in urban and regional context, the attractiveness and the distance between two locations, can be seen respectively as the masses and the distance mentioned in Newton's law. In short, the spatial interaction model leverage on the principles of the gravitational models to predict how locations within a city of a regional system would spatially interact with each other based on the distance and the level of attraction between them.
+
+As the spatial interaction model can vary to reflect the different type that might happened within a system, the family of spatial interaction model was introduced and described next:
 
 \paragraph{The unconstrained model}\mbox{}\\
+
+The unconstrained model allows flows within the system to interact freely and apply in full the principles. As the intensity of the attraction increases, the flows will also increase. Inversely, when the distance also noted as the cost of interaction increases, the flows will decrease between the locations of interest. The model can be defined as follows \citep{}
+
+\[T_{ij} = k \frac{O_i^\alpha  D_j^\gamma}{ d_{ij}^\beta}\] where 
+
+\begin{itemize}
+  \item $T_{ij}$ represents the interaction of flows between the location $i$ (origin) and the location $j$ (destination) within the system. Mathematically,  $T_{ij}$ is a matrix with the $i$ origins as rows and the $j$ destinations as columns.
+  \item $O_{i}$ is a vector that contains the values of the attribute that reflect the intensity of future interaction of location $i$ as on origin with the rest of the system.
+  \item $D_{j}$ is a vector that contains the values of the attribute that captures how intense would be the interactions of location $j$ as an destination in the system.
+\end{itemize}
 
 \paragraph{Production-constrained model}\mbox{}\\
 
