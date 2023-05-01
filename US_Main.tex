@@ -136,7 +136,7 @@ As the spatial interaction model can vary to reflect the different type that mig
 
 \paragraph{The unconstrained model}\mbox{}\\
 
-The unconstrained model allows flows within the system to interact freely and apply in full the principles. As the intensity of the attraction increases, the flows will also increase. Inversely, when the distance also noted as the cost of interaction increases, the flows will decrease between the locations of interest. The model can be defined as follows \citep{}
+The unconstrained model allows flows within the system to interact freely and apply in full the principles. As the intensity of the attraction increases, the flows will also increase. Inversely, when the distance also noted as the cost of interaction increases, the flows will decrease between the locations of interest. The model can be defined as follows \citep{arcauteSpatialInteractionModelling2023}
 
 \[T_{ij} = k \frac{O_i^\alpha  D_j^\gamma}{ d_{ij}^\beta}\] where 
 
@@ -144,8 +144,13 @@ The unconstrained model allows flows within the system to interact freely and ap
   \item $T_{ij}$ represents the interaction of flows between the location $i$ (origin) and the location $j$ (destination) within the system. Mathematically,  $T_{ij}$ is a matrix with the $i$ origins as rows and the $j$ destinations as columns.
   \item $O_{i}$ is a vector that contains the values of the attribute that reflect the intensity of future interaction of location $i$ as on origin with the rest of the system.
   \item $D_{j}$ is a vector that contains the values of the attribute that captures how intense would be the interactions of location $j$ as an destination in the system.
+    \item $d$ is a matrix that contains the distance of cost of interaction between every origin $i$ and destination $j$ of the system.
+    \item $k$, $\alpha$, $\gamma$ and $\beta$ are parameters of the model that need to be estimated.
 \end{itemize}
 
+$k$ is the balancing factor or the constant of proportionality, and is defined as
+
+\[k = \frac{T}{\sum_i \sum_j O_i^\alpha  D_j^\gamma  d_{ij}^{-\beta}}\] where $T$ represents the total of observed flows between the $i$ origins and $j$ destinations in the system and is denoted by \[T= \sum_i \sum_j T_{ij}\]
 \paragraph{Production-constrained model}\mbox{}\\
 
 \paragraph{Attraction-constrained model}\mbox{}\\
