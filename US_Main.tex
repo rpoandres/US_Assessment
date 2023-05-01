@@ -20,6 +20,7 @@
 \bibliographystyle{abbrvnat}
 \hypersetup{citecolor=black}
 \setcitestyle{authoryear,open={(},close={)}}
+\setcounter{secnumdepth}{4}
 
 \begin{document}
 \maketitle
@@ -34,9 +35,11 @@
 
 % Once you're familiar with the editor, you can find various project setting in the Overleaf menu, accessed via the button in the very top left of the editor. To view tutorials, user guides, and further documentation, please visit our \href{https://www.overleaf.com/learn}{help library}, or head to our plans page to \href{https://www.overleaf.com/user/subscription/plans}{choose your plan}.
 
-\subsection{Centrality measures}
+\subsection{Topological network}
 
-\subsubsection{Degree centrality} 
+\subsubsection{Centrality measures}
+
+\paragraph{Degree centrality}\mbox{}\\
 
 The degree of a node is the number of edges that node is connected with \citep{arcauteNetworksUrbanSimulation2023}. Hence, the degree centrality measure account for the number of edges a node is connected to. The higher the value, the higher number of edges (links) are connected to that node. Although simple, the degree centrality comes as a valuable reference when assessing networks \citep{newmanNetworks2018}. The degree centrality measure $d$ for node $i$ is defined as 
 
@@ -46,7 +49,8 @@ where $v$ is the number of edges connected to node $i$ and $n$ is number of node
 
 In the underground network context, the degree centrality of a station would measure the number of connections of a stations to other stations in the underground. Thus, this measure would detect the stations with the higher level of connectivity in the underground when just considering the number of direct connections to other stations. If the station with the highest degree centrality measure value is removed, it will caused the biggest effect in the network in terms of number of disrupted immediate connections.
 
-\subsubsection{Closeness centrality - Reeplace with eigen vector?}
+
+\paragraph{Closeness centrality}\mbox{}\\ 
 
 The closeness centrality measures accounts for how close in term of distance is a node to other nodes in a network.
 
@@ -60,7 +64,8 @@ where $n$ is the total number of nodes of the network. Thus, the closeness centr
 
 The closeness centrality measure applied to the underground network would result in the how distant is a station to reach all other stations. In other words, this measure would flag the station with the lowest mean geodesic distance (shortest path) to all other stations.
 
-\subsubsection{Betweenness centrality}
+
+\paragraph{Betweenness centrality}\mbox{}\\
 
 The betweenness centrality measure calculates the number of shortest paths between all possible node pairs in a network that go though a node \citep{arcauteNetworksUrbanSimulation2023}.
 
@@ -85,20 +90,34 @@ Specially in the topological case, there is a high chance of having more than on
 
 In the case of the underground network, the betweeness centrality identifies the station which the highest number of shortest paths between node pairs go thought it. If removed, all the shortest path that go though that station will recomputed to longer alternatives paths to connect origin and destination stations, negatively affecting the system's efficiency.
 
-\subsection{Impact measures}
 
-\subsubsection{Number of connected components}
+\subsubsection{Impact measures}
 
-\subsubsection{Size of largest connected component}
+\paragraph{Number of connected components}\mbox{}\\
 
-\subsubsection{Results of impact measures}
+\paragraph{Size of largest connected component}\mbox{}\\
+
+\subsubsection{Node removal}
+
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=15cm]{Results_Impact_Measures_Total.jpg}
-    \caption{Result of the impact measures by non-sequential and sequential node removal strategy}
+    \caption{Result of the impact measures by non-sequential and sequential node removal strategies}
     \label{fig:impact_results}
 \end{figure}
+
+\subsection{Flows: weighted network}
+
+\subsubsection{Adjusted centrality measures}
+
+\subsubsection{Adjusted impact measure}
+
+\paragraph{Total flows of the largest component}\mbox{}\\
+
+
+
+\subsubsection{Node removal}
 
 \section{Spatial interaction models}
 
@@ -106,6 +125,16 @@ In the case of the underground network, the betweeness centrality identifies the
 \subsection{Models and calibration}
 
 \subsubsection{Introduction}
+
+The spatial interaction models of interest are derived from the basic gravitational model, which embodies Newton's law of universal gravitation \citep{battyUrbanModellingAlgorithms1976}. Newton's law states that a particle in the universe would interact with other particles with a force directly proportional to the product of their masses and inversely proportional to the between them \citep{battyUrbanSimulationSpatial2023}.
+
+\paragraph{The unconstrained model}\mbox{}\\
+
+\paragraph{Production-constrained model}\mbox{}\\
+
+\paragraph{Attraction-constrained model}\mbox{}\\
+
+\paragraph{Doubly constrained model}\mbox{}\\
 
 \subsubsection{Parameter calibration}
 
