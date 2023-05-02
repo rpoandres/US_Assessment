@@ -147,11 +147,18 @@ In the case of the betweenness centrality, before incorporating the flows in the
 
 For the eigenvector centrality measure, it not necessary yo invert the flows, is the calculation would interpret a higher flow as a more influential node in the network. For the degree centrality measures, it remain same as before considering that this measure is oriented to track the station with the highest number of immediate connections to other stations.
 
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{Weighted_Centrality_Results.jpg}
+    \caption{Result of adjusted centrality measures}
+    \label{fig:weighted_centrality_results}
+\end{figure}
 
+The results for the betweenness and eigenvector centrality are different to the results of the topological network. These two measures effectively are using the flows as weights to reflect the flow of passengers in each case. The highest ranked station are Green Park and Waterloo, for the weighted betweeness and the weighted eigenvector centrality, respectively. In the topological network, the highest ranked in both measure was Stratford.
 
 \subsubsection{Adjusted impact measure}
 
-For the assessment of the impact in the network, the total flows of the largest connected component were added to determine how the node removal is affecting the normal flow of passengers in the network.
+For the assessment of the impact in the network, the total flows of the largest connected component were added to determine how the node removal is affecting the normal flow of passengers in the network. The inclusion of this information, would allow to identify how is the isolation impact when there is disturbance in the network in term of flows removed from the connected network, or in other word, decrease of flows in the largest connected component.
 
 \paragraph{Total flows of the largest component}\mbox{}\\
 
