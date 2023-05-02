@@ -132,7 +132,7 @@ The spatial interaction models of interest are derived from the basic gravitatio
 
 When applying gravitation model in urban and regional context, the attractiveness and the distance between two locations, can be seen respectively as the masses and the distance mentioned in Newton's law. In short, the spatial interaction model leverage on the principles of the gravitational models to predict how locations within a city of a regional system would spatially interact with each other based on the distance and the level of attraction between them.
 
-As the spatial interaction model can vary to reflect the different type that might happened within a system, the family of spatial interaction model was introduced and described next:
+As the spatial interaction model can vary to reflect the different type that might happened within a system, the family of spatial interaction model was introduced and described next, \citep{wilsonEntropyUrbanRegional2011} and \citep{wilsonFamilySpatialInteraction1971} cited by \citep{battyUrbanModellingAlgorithms1976}:
 
 \paragraph{The unconstrained model}\mbox{}\\
 
@@ -153,9 +153,52 @@ $k$ is the balancing factor or the constant of proportionality, and is defined a
 \[k = \frac{T}{\sum_i \sum_j O_i^\alpha  D_j^\gamma  d_{ij}^{-\beta}}\] where $T$ represents the total of observed flows between the $i$ origins and $j$ destinations in the system and is denoted by \[T= \sum_i \sum_j T_{ij}\]
 \paragraph{Production-constrained model}\mbox{}\\
 
+The production-constrained model varies from the general gravitational model (unconstrained-model) as the flows from every $i$ origins is given and would be a constrain when predicting interactions with the $j$ destinations of the system. This variation of the general model is commonly used to asses the flows residential locations ($i$ origins) to areas with higher commercial densities or retail use ($j$ destinations) \citep{wilkinsonSpatialInteractionModelling2023}. The model is defined as
+
+\[T_{ij} = A_i O_i D_j^\gamma d_{ij}^{-\beta}\] where the flows from the $i$ origins is fixed and defined by \[O_i = \sum_j T_{ij}\] and $A$ the balancing factor is defined as
+
+\[A_i = \frac{1}{\sum_j D_j^\gamma d_{ij}^{-\beta}}\] similarly to the role that $k$ plays in the unconstrained model, making sure that the total origin flows fits the given constrained.  Regarding the other components of the equation
+
+\begin{itemize}
+  \item $T_{ij}$ represents the interaction of flows between the location $i$ (origin) and the location $j$ (destination) within the system. 
+  \item $O_{i}$ is the constrained vector equivalent to the total flows from origin $i$ to destinations $j$ in the system.
+  \item $D_{j}$ is a vector that contains the values of the attribute that captures how intense would be the interactions of location $j$ as an destination in the system.
+    \item $d$ is a matrix that contains the distance of cost of interaction between every origin $i$ and destination $j$ of the system.
+    \item $A_{i}$, $\gamma$ and $\beta$ are parameters of the model that need to be estimated.
+\end{itemize}
+
 \paragraph{Attraction-constrained model}\mbox{}\\
 
+Similarly to the origin-constrained model, the attraction-constrained model predicts the flows between origin $i$ and destination $j$, by constraining the in-coming flows to the destinations $j$ in the system. Is mainly used to estimate the relocation's patterns within a urban system, when a new source of employment is located in certain location ($j$ destination). As the hypothetical new employer is given in a specific site ($j$) and the new jobs are known or estimated, the origin-constrained model predicts where would people relocate to benefit from the new jobs, considering the  cost of interaction $d$ to access the new job positions created. The model is defined as follows
+
+\[T_{ij} = D_j B_j O_i^\alpha d_{ij}^{-\beta}\] where the flows to destination $j$ are a known constrained and defined by \[D_j = \sum_i T_{ij}\] and $B$ as balancing factor is defined as \[B_j = \frac{1}{\sum_i O_i^\alpha d_{ij}^{-\beta}}\]. The other component of the attraction-constrained model are
+
+\begin{itemize}
+  \item $T_{ij}$ represents the interaction of flows between the location $i$ (origin) and the location $j$ (destination) within the system. 
+  \item $D_{j}$ is the constrained vector equivalent of all flows going to every $j$ destination $j$ from origin $i$ in the system.
+  \item $O_{i}$ is a vector that contains the values of the attribute that captures how intense would be the interactions of location $i$ as origins in the system.
+    \item $d$ is a matrix that contains the distance of cost of interaction between every origin $i$ and destination $j$ of the system.
+    \item $B_{j}$, $\alpha$  and $\beta$ are parameters of the model that need to be estimated.
+\end{itemize}
+
+
 \paragraph{Doubly constrained model}\mbox{}\\
+
+As oppose to the unconstrained model, the doubly constrained model estimates the flows between origin $i$ and destination $j$ by applying constrains in both the origin $O_{i}$ and destination $D_{j}$ vectors. This type of model is useful to assess inter modal mobility patterns when more than one mode of transportation is available in the system, when assessing mobility patterns overtime and when there is variation in the other parameters like the distance or cost of interaction \citep{wilkinsonSpatialInteractionModelling2023}. The model is defined as
+
+\[T_{ij} = A_i B_j O_i D_j d_{ij}^{-\beta}\] where there are constrains for both origin $O_{i}$ and destination $D_{j}$ vectors as \[O_i = \sum_j T_{ij}\] \[D_j = \sum_i T_{ij} \] and the balancing factors are
+
+\[A_i = \frac{1}{\sum_j B_j D_j d_{ij}^{-\beta}}\]
+\[B_j = \frac{1}{\sum_i A_i O_i d_{ij}^{-\beta}}\] where 
+
+\begin{itemize}
+  \item $T_{ij}$ represents the interaction of flows between the location $i$ (origin) and the location $j$ (destination) within the system. 
+  \item $D_{j}$ is a constrained vector equivalent of all flows going to every $j$ destination $j$ from origin $i$ in the system.
+  \item $O_{i}$ is a constrained vector equivalent to the total flows from origin $i$ to destinations $j$ in the system.
+    \item $d$ is a matrix that contains the distance of cost of interaction between every origin $i$ and destination $j$ of the system.
+    \item $B_{j}$, $A_{i}$ and $\beta$ are parameters of the model that need to be estimated.
+\end{itemize}
+
 
 \subsubsection{Parameter calibration}
 
