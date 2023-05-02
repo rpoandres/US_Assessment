@@ -96,13 +96,26 @@ In the underground network case, the eigenvector centrality measures captures th
 
 Next, a summary of the centrality measures results is presented:
 
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{Centrality_Results.jpg}
+    \caption{Result of centrality measure in the topological network}
+    \label{fig:centrality_results}
+\end{figure}
 
+With the centrality measures described above, in the 3 cases, Stratford is the station ranked first. Bank and Monument station, is ranked second also in all measures. And at the third position, Liverpool Street station is ranked second in two of the tree centrality measures.
+
+As there are some stations in the degree centrality that have the same value in the measure, their position in the ranking my differ according to the sorting method between stations.
 
 \subsubsection{Impact measures}
 
 \paragraph{Number of connected components}\mbox{}\\
 
+The number of connected components when removing stations from the network, allows to identify if the removal of a given station using disrupts the network to a point where there is more than one connected component only. As the node removal is carried out, this impact measure will flag when the disruption of the network is strong enough to cause the isolation of one more node. Considering that the node removal will be developed using the different rankings of the respective centrality measures selected, it would be possible to compare the level of disruption between centrality measures.
+
 \paragraph{Size of largest connected component}\mbox{}\\
+
+Similarly to the above mentioned, the size of the remaining connected component is a valuable reference for the damage that the node removal procedure is causing in the network. As there might be different scenarios of disruption in the network with the same number of connected components, the size of the largest connected component plays a complementary role of the number itself of connected components. In that sense, the combination of both impact measure would provide detailed and comparable references when assessing the severity of the damage and the resilience of the underground network.
 
 \subsubsection{Node removal}
 
@@ -114,11 +127,31 @@ Next, a summary of the centrality measures results is presented:
     \label{fig:impact_results}
 \end{figure}
 
+In Figure \ref{fig:impact_results}, the results of the impact measure are presented, for both non-sequential and sequential node removal strategies. In each case, the impact measure is shown for each centrality measure used in the impact assessment. 
+
+In the non-sequential strategy, both eigenvector and betweenness centrality shown the same  results in both impact measures. The degree centrality measure captured slightly better the increase in number of connected components, specially after removing the 9th highest ranked node. The opposite happens with the size of the largest connected component, in which the eigenvector and betweenness centrality measures flagged slightly better the damage in the network, although the degree centrality outperforms them after removing 15 nodes.
+
+With the sequential node removal strategy, the degree and the betweenness centrality had very similar results in term of the number of connected components. On the other hand, the eigenvector centrality started close to his peers but after node number 10, it has less effective performance in reflecting the network disturbance. Regarding the size of the largest component in the sequential strategy, the centrality measure that seems to have caused the greater effect is the betweenness centrality, as it cased a more dramatically reduction of the size of the largest component, compared to his peers.
+
+Overall, the measure that seems to reflect more accurately the impact when removing nodes is the betweenness centrality, as it has shown a significantly difference in terms of the size of the largest connected component when following the sequential strategy.
+
 \subsection{Flows: weighted network}
+
+The use of additional information as weight variable when assessing the underground network, can bring insight-full reference apart from just considering strictly the topological network. Ideally, the centrality measures used in the above section, should leverage in this additional information to better assess the strengths and weaknesses from a more realistic perspective. In this case, the flows of passengers will be considered in the impact and resilience assessment as they reflect the system in real-life circumstances.
 
 \subsubsection{Adjusted centrality measures}
 
+In order to reflect the flows of passengers in the underground network, the centrality measures need to have minor adjustments.
+
+In the case of the betweenness centrality, before incorporating the flows in the calculations, they must be inverted, as this measure expects to have a length or distance in this variable. Considering that the flows are expressed in terms of passengers, the highest flows of should be related to the shortest distance between nodes in the calculation. To achieve this, the quantity of flows should be inverted and stored as an edge attribute in the network.
+
+For the eigenvector centrality measure, it not necessary yo invert the flows, is the calculation would interpret a higher flow as a more influential node in the network. For the degree centrality measures, it remain same as before considering that this measure is oriented to track the station with the highest number of immediate connections to other stations.
+
+
+
 \subsubsection{Adjusted impact measure}
+
+For the assessment of the impact in the network, the total flows of the largest connected component were added to determine how the node removal is affecting the normal flow of passengers in the network.
 
 \paragraph{Total flows of the largest component}\mbox{}\\
 
@@ -207,11 +240,17 @@ As oppose to the unconstrained model, the doubly constrained model estimates the
 
 \subsubsection{Parameter calibration}
 
-\subsubsection{Betweenness centrality}
+As the purpose of the next section is to assess the impact of a decrease of employment in the surrounding of a specific underground station, the more appropriate spatial interaction model is the attraction constrained model. The future scenario states that the employment would decrease by 50\% in Canary Wharf, so the model that is sensitive to variations in the attractiveness of the destinations, in this case for employment reasons, is the attraction-constrained model.
+
+After reviewing that the flows and distance data seems to follow a Poisson distribution, a Poisson distribution is carried out to identify the value of the  $\beta$ parameter, which value is equal to: 9.758214913376582e-05.
 
 \subsection{Scenarios}
 
+
+
 \subsubsection{Scenario A}
+
+As instructed, the jobs positions in the surrounding area of Cannary Wharf has decreased by 50\%. A new attribute in the data frame is created to store the scenario value of jobs for the entries that have Cannary Wharf as destination station. 
 
 \subsubsection{Scenario B}
 
